@@ -6,7 +6,7 @@ USE biblioteca;
 CREATE TABLE livro (
 id INT AUTO_INCREMENT PRIMARY KEY,
 titulo VARCHAR(255),
-isbn VARCHAR(255), 
+isbn VARCHAR(255) UNIQUE, 
 descricao TEXT
 );
 
@@ -21,7 +21,7 @@ CREATE TABLE usuario (
 id INT AUTO_INCREMENT PRIMARY KEY,
 nome VARCHAR(255),
 numero_identificacao VARCHAR(255), 
-email VARCHAR(255),
+email VARCHAR(255) UNIQUE,
 data_nascimento DATE
 );
 
@@ -214,7 +214,7 @@ INSERT INTO emprestimo (data_emprestimo, data_devolucao, data_devolucao_realizad
      5, 1),
 	('2024-09-20',
 	 '2024-09-30',
-	 '2024-09-31', 
+	 '', 
      4, 7),
 	('2024-10-10',
 	 '2024-10-20',
@@ -230,11 +230,11 @@ INSERT INTO emprestimo (data_emprestimo, data_devolucao, data_devolucao_realizad
      6, 9),
 	('2024-11-08',
 	 '2024-11-18',
-	 '2024-11-17', 
+	 '', 
      10, 10),
 	('2024-12-21',
 	 '2024-12-31',
-	 '2025-01-05', 
+	 '', 
      9, 8);
      
 INSERT INTO livro_categoria (id_livro, id_categoria) VALUES
@@ -261,7 +261,7 @@ INSERT INTO autor_livro (id_livro, id_autor) VALUES
     (9, 6),
     (10, 9);
     
--- Visualizar os dados que estão dentro de cada tabela
+-- Visualizar os dados que estão dentro de cada tabela	
 SELECT * FROM livro;
 SELECT * FROM autor;
 SELECT * FROM usuario;
@@ -279,3 +279,4 @@ DESCRIBE livro;
 
 -- Apagar tabela
 -- DROP DATABASE Biblioteca_Julya;
+    
