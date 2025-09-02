@@ -107,7 +107,7 @@ INSERT INTO livro (titulo, isbn, descricao) VALUES
      '9788576849943',
      'Dale Carnegie oferece técnicas práticas de comunicação, relacionamento e liderança, mostrando como influenciar pessoas e construir conexões duradouras.');
 
-INSERT INTO autor (nome, data_nasc, biografia) VALUES
+INSERT INTO autor (nome, data_nascimento, biografia) VALUES
 	('Yuval Noah Harari', 
 	 '1976-02-24', 
 	 'Historiador e professor israelense, Harari é conhecido por suas obras que exploram a história da humanidade e as possíveis direções futuras da sociedade.'),
@@ -139,7 +139,7 @@ INSERT INTO autor (nome, data_nasc, biografia) VALUES
 	 '1954-03-26', 
 	 'Físico e escritor americano, Mlodinow é conhecido por seus livros de divulgação científica, explorando temas como acaso, probabilidade e a ciência do cotidiano, como em "O Andar do Bêbado".')
 
-INSERT INTO usuario (numero_ident, email, data_cadastro) VALUES
+INSERT INTO usuario (numero_identificacao, email, data_cadastro) VALUES
     ('U0001',
      'andre.dantas@email.com',
      '2024-01-28'),
@@ -172,26 +172,16 @@ INSERT INTO usuario (numero_ident, email, data_cadastro) VALUES
 	 '2025-5-20');
 	
 INSERT INTO nivel_usuario (nivel, id_usuario) VALUES
-    ('Administrador', 
-	 1),
-    ('Padrão', 
-	 2),
-    ('Administrador', 
-	 3),
-    ('Padrão', 
-	 4),
-    ('Padrão', 
-	 5),
-    ('Padrão', 
-	 6),
-    ('Padrão', 
-	 7),
-    ('Padrão', 
-	 8),
-    ('Padrão', 
-	 9),
-    ('Padrão', 
-	 10);
+    ('Administrador', 1),
+    ('Padrão', 2),
+    ('Administrador', 3),
+    ('Padrão', 4),
+    ('Padrão', 5),
+    ('Padrão', 6),
+    ('Padrão', 7),
+    ('Padrão', 8),
+    ('Padrão', 9),
+    ('Padrão', 10);
 
 INSERT INTO categoria (nome) VALUES
     ('Ação'),
@@ -204,3 +194,88 @@ INSERT INTO categoria (nome) VALUES
     ('Romance'),
     ('Mistério'),
     ('Suspense');
+    
+INSERT INTO emprestimo (data_emprestimo, data_devolucao, data_devolucao_realizada, id_livro, id_usuario) VALUES
+	('2024-06-23',
+	 '2024-07-02',
+	 '2024-07-04', 
+     2, 3),
+	('2024-07-25',
+	 '2024-07-04',
+	 '2024-07-01', 
+     1, 2),
+	('2024-08-20',
+	 '2024-08-30',
+	 '2024-08-31', 
+     3, 4),
+	('2024-08-30',
+	 '2024-09-02',
+	 '2024-09-01', 
+     5, 1),
+	('2024-09-20',
+	 '2024-09-30',
+	 '2024-09-31', 
+     4, 7),
+	('2024-10-10',
+	 '2024-10-20',
+	 '2024-10-13', 
+     8, 6),
+	('2024-10-10',
+	 '2024-10-20',
+	 '2024-10-25', 
+     7, 5),
+	('2024-11-03',
+	 '2024-11-13',
+	 '2024-11-13', 
+     6, 9),
+	('2024-11-08',
+	 '2024-11-18',
+	 '2024-11-17', 
+     10, 10),
+	('2024-12-21',
+	 '2024-12-31',
+	 '2025-01-05', 
+     9, 8);
+     
+INSERT INTO livro_categoria (id_livro, id_categoria) VALUES
+    (1, 2),
+    (2, 1),
+    (3, 4),
+    (4, 3),
+    (5, 6),
+    (6, 5),
+    (7, 8),
+    (8, 7),
+    (9, 10),
+    (10, 9);
+    
+INSERT INTO autor_livro (id_livro, id_autor) VALUES
+    (1, 2),
+    (2, 3),
+    (3, 4),
+    (4, 4),
+    (5, 8),
+    (6, 10),
+    (7, 1),
+    (8, 5),
+    (9, 6),
+    (10, 9);
+    
+-- Visualizar os dados que estão dentro de cada tabela
+SELECT * FROM livro;
+SELECT * FROM autor;
+SELECT * FROM usuario;
+SELECT * FROM nivel_usuario;
+SELECT * FROM categoria;
+SELECT * FROM emprestimo;
+SELECT * FROM livro_categoria;
+SELECT * FROM autor_livro;
+
+-- Para visualizar as tabelas
+SHOW tables;
+
+-- Ver os campos de uma tabela especifica
+DESCRIBE livro;
+
+-- Apagar tabela
+-- DROP DATABASE Biblioteca_Julya;
